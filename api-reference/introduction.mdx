@@ -1,33 +1,31 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Introduction"
+description: "Learn how to use Notocat's API"
 ---
-
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Before you can use Notocat's API, you will need to have a Notocat account and a newsletter. You can [create a Notocat account](https://app.notocat.com/signup) and then [create a newsletter](https://app.notocat.com/add-newsletter). Each newsletter comes with a unique newsletter ID that you can use to interact with your data through the API.
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+To authenticate with the API, you need to send your API key in the `Authorization` header. The API key must be prefixed with `Bearer `. The header should look like this:
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+`Authorization: Bearer <token>`
+
+[Click here to get your API key](https://app.notocat.com/settings/api)
+
+### Example request
+
+``` sh
+curl "https://api.notocat.com/v1/contacts?newsletter_id=<newsletter_id>" \
+  -X GET \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <token>"
 ```
+
+## How to find the Newsletter ID
+
+You can get the newsletter ID from the URL of your newsletter page in Notocat. Open your newsletter from your dashboard and check the URL in your browser. The newsletter ID starts with `wks_` and has 25 characters like in the picture below:
+
+<img src="/images/notocat-newsletter-id.jpg" height="250" alt="Noto settings" />
