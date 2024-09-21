@@ -1,0 +1,68 @@
+---
+title: Custom CSS
+description: Customize the visuals of your issues
+icon: 'palette'
+---
+
+# Custom CSS for your issues
+
+Notocat allows you to modify the visuals of your issues on top of Notion's built-in customization options. One of the options is to add custom CSS to your issues. Read more to learn what are the available classes you can use in the CSS.
+
+<Warning>
+Please note that the CSS needs to be valid and supported by all the email clients. We recommend using [Can I Email](https://www.caniemail.com/) to check the compatibility of your CSS. A small issue in the CSS can invalidate the entire styling of your issue in some email clients.
+</Warning>
+
+## Available CSS classes
+
+* `nc_link` - The class for the links in your issue
+* `nc_heading1` - Heading 1 block styling
+* `nc_heading2` - Heading 2 block styling
+* `nc_heading3` - Heading 3 block styling
+* `nc_paragraph` - The class for the paragraphs in your issue
+* `nc_divider` - The class for the divider lines in your issue
+* `nc_image` - The class for the images in your issue
+* `nc_main_table` - The class for the main content of the email
+* `nc_body` - The class for the body of the email (contains the main table)
+* `nc_spacing` - The class of the element that adds spacing between blocks
+
+## Examples
+
+### Modifying the spacing between blocks
+
+```css
+.nc_spacing {
+    height: 10px !important;
+    line-height: 10px !important;
+}
+```
+
+### Changing the links font
+
+```css
+.nc_link {
+    font-size: 16px;
+    font-weight: 600;
+}
+```
+
+### Changing the font size of the paragraphs
+
+```css
+.nc_paragraph {
+    font-size: 20px;
+}
+```
+
+### Changing the main heading style
+
+```css
+.nc_heading1 {
+  font-size: 30px;
+  line-height: 26px;
+  padding-top: 1.6em;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #434343;
+}
+```

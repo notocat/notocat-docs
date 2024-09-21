@@ -2,3 +2,7 @@
 title: 'Delete Contact'
 openapi: 'DELETE /contacts'
 ---
+
+This endpoint can be used to delete contacts from a workspace in bulk. This action is irreversible.
+
+By default, the endpoint will only delete contacts that are not subscribed. If you want to delete all contacts, you can pass the `subscribed` query parameter with the value `true`.

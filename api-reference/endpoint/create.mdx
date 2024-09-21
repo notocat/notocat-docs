@@ -1,4 +1,8 @@
 ---
-title: 'Create or update contacts in bulk'
+title: 'Create or update in bulk'
 openapi: 'POST /contacts'
 ---
+
+The endpoint can be used to create a full list of contacts with Notocat. If a contact already exists, the data will be merged. The contacts can be updated in bulk when provided with IDs or emails that already exist in the database. If the contact does not exist, it will be created with the email provided.
+
+**The endpoint accepts a minimum of 1 contact and a maximum of 1000 contacts.**

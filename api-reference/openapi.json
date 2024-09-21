@@ -110,7 +110,23 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewContact"
+                "type": "object",
+                "properties": {
+                  "newsletter_id": {
+                    "type": "string",
+                    "description": "The newsletter ID"
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/NewContact"
+                    },
+                    "minItems": 1,
+                    "maxItems": 1000,
+                    "description": "An array of contacts to add or update"
+                  }
+                },
+                "required": ["newsletter_id", "contacts"]
               }
             }
           },
@@ -195,6 +211,55 @@
           }
         }
       }
+    },
+    "/contacts/{id}": {
+      "put": {
+        "description": "Updates a contact",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the contact to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The data to update the contact with",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewContact"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Contact updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -257,58 +322,33 @@
         }
       },
       "NewContact": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Contact"
+        "required": [
+          "email",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "description": "The email of the contact",
+            "type": "string"
           },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the contact",
-                "type": "integer",
-                "format": "int64"
-              },
-              "email": {
-                "description": "The email of the contact",
-                "type": "string"
-              },
-              "name": {
-                "description": "The name of the contact",
-                "type": "string"
-              },
-              "first_name": {
-                "description": "The first name of the contact",
-                "type": "string"
-              },
-              "last_name": {
-                "description": "The last name of the contact",
-                "type": "string"
-              },
-              "subscribed": {
-                "description": "Subscription status of the contact",
-                "type": "boolean"
-              },
-              "unsub_token": {
-                "description": "Unsubscribe token for the contact",
-                "type": "string"
-              },
-              "createdAt": {
-                "description": "Creation timestamp of the contact",
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "description": "Last update timestamp of the contact",
-                "type": "string",
-                "format": "date-time"
-              }
-            }
+          "name": {
+            "description": "The name of the contact",
+            "type": "string"
+          },
+          "first_name": {
+            "description": "The first name of the contact",
+            "type": "string"
+          },
+          "last_name": {
+            "description": "The last name of the contact",
+            "type": "string"
+          },
+          "subscribed": {
+            "description": "Subscription status of the contact",
+            "type": "boolean"
           }
-        ]
+        }
       },
       "Error": {
         "required": [

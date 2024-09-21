@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Notocat Docs",
+  "name": "Notocat Developer Docs",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -33,14 +33,14 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "notocat.com",
+      "icon": "house",
+      "url": "https://notocat.com"
     },
     {
       "name": "Community",
       "icon": "discord",
-      "url": "https://mintlify.com/community"
+      "url": "https://discord.gg/4nz3vmVAuq"
     },
     {
       "name": "Blog",
@@ -50,22 +50,15 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Docs",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "introduction"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Guides",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "guides/custom-css"
       ]
     },
     {
@@ -79,13 +72,13 @@
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
+        "api-reference/endpoint/update",
         "api-reference/endpoint/delete"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/notocat",
+    "github": "https://github.com/notocat"
   }
 }
