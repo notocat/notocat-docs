@@ -79,6 +79,13 @@
   ],
   "footerSocials": {
     "x": "https://x.com/notocat",
+    "instagram": "https://instagram.com/notocatapp",
+    "discord": "https://discord.gg/4nz3vmVAuq",
     "github": "https://github.com/notocat"
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
   }
 }
