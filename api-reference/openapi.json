@@ -343,7 +343,7 @@
             "type": "boolean"
           },
           "custom_fields": {
-            "description": "Custom fields for the contact. Can be a `key: value` object or an array of objects.",
+            "description": "Custom fields for the contact. Can be a `key: value` object or an array of objects. If the value is a date, it must be in ISO format or YYYY-MM-DD to be picked up correctly.",
             "oneOf": [
               {
                 "type": "object"
@@ -363,7 +363,7 @@
                     },
                     "type": {
                       "type": "string",
-                      "description": "The data type of the custom field. Can be `string`, `number`, `date`. This data is useful when segmenting contacts."
+                      "description": "The data type of the custom field. Can be `string`, `number`, `date`. This data is useful when segmenting contacts. If the value is a date, it must be in ISO format or YYYY-MM-DD to be picked up correctly."
                     }
                   },
                   "required": ["name", "value", "type"]
