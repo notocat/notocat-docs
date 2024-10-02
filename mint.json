@@ -21,12 +21,12 @@
     "description": "Notocat Developer Documentation - Learn how to integrate and use Notocat's powerful newsletter creation tools.",
     "og:description": "Notocat Developer Documentation - Learn how to integrate and use Notocat's powerful newsletter creation tools.",
     "og:type": "website",
-    "og:image": "https://notocat-marketing.b-cdn.net/notocat-banner.jpg",
+    "og:image": "https://notocat-marketing.b-cdn.net/notocat-dev-banner.jpg",
     "og:url": "https://docs.notocat.com",
     "twitter:card": "summary_large_image",
     "twitter:title": "Notocat Developer Docs",
     "twitter:description": "Notocat Developer Documentation - Learn how to integrate and use Notocat's powerful newsletter creation tools.",
-    "twitter:image": "https://notocat-marketing.b-cdn.net/notocat-banner.jpg",
+    "twitter:image": "https://notocat-marketing.b-cdn.net/notocat-dev-banner.jpg",
     "twitter:site": "@notocat"
   },
   "topbarLinks": [
