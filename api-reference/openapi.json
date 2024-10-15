@@ -317,8 +317,7 @@
       },
       "NewContact": {
         "required": [
-          "email",
-          "name"
+          "email"
         ],
         "type": "object",
         "properties": {
