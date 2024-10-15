@@ -339,7 +339,8 @@
           },
           "subscribed": {
             "description": "Subscription status of the contact",
-            "type": "boolean"
+            "type": "boolean",
+            "default": true
           },
           "custom_fields": {
             "description": "Custom fields for the contact. Can be a `key: value` object or an array of objects. If the value is a date, it must be in ISO format or YYYY-MM-DD to be picked up correctly.",
