@@ -72,7 +72,8 @@
     {
       "group": "Guides",
       "pages": [
-        "guides/custom-css"
+        "guides/custom-css",
+        "guides/make-integration"
       ]
     },
     {
