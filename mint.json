@@ -85,10 +85,18 @@
     {
       "group": "Contact Endpoint",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/contacts/get",
+        "api-reference/endpoint/contacts/create",
+        "api-reference/endpoint/contacts/update",
+        "api-reference/endpoint/contacts/delete"
+      ]
+    },
+    {
+      "group": "Send Endpoint",
+      "pages": [
+        "api-reference/endpoint/sends/create",
+        "api-reference/endpoint/sends/test",
+        "api-reference/endpoint/sends/send"
       ]
     }
   ],

@@ -260,6 +260,141 @@
           }
         }
       }
+    },
+    "/sends": {
+      "post": {
+        "description": "Creates a send",
+        "requestBody": {
+          "description": "Transform a Notion page into an issue to be sent",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSend"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Send created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Send"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sends/{id}/test": {
+      "post": {
+        "description": "Sends a test email for the specified send",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the send",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Test email configuration",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendTestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Test email sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendTestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sends/{id}/send": {
+      "post": {
+        "description": "Sends an issue to subscribers",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the send",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Send configuration",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendIssueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Issue sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendIssueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -370,6 +505,223 @@
                 }
               }
             ]
+          }
+        }
+      },
+      "NewSend": {
+        "required": ["workspace_id", "page_id"],
+        "type": "object",
+        "properties": {
+          "workspace_id": {
+            "description": "The ID of the workspace",
+            "type": "string"
+          },
+          "page_id": {
+            "description": "The ID of the Notion page to transform into an issue",
+            "type": "string"
+          },
+          "subject": {
+            "description": "The subject line of the email. If not provided, it will be extracted from the Notion page properties.",
+            "type": "string"
+          },
+          "preheader": {
+            "description": "The preheader text of the email",
+            "type": "string"
+          },
+          "segment_id": {
+            "description": "The ID of the segment to send to. If not provided, all workspace contacts will be used.",
+            "type": "string"
+          },
+          "font": {
+            "description": "The font used in the email",
+            "type": "string"
+          },
+          "css": {
+            "description": "Custom CSS for the email",
+            "type": "string"
+          },
+          "linkColor": {
+            "description": "The color of links in the email",
+            "type": "string",
+            "default": "#0000ED"
+          },
+          "dividerColor": {
+            "description": "The color of dividers in the email",
+            "type": "string",
+            "default": "#434343"
+          },
+          "dividerSize": {
+            "description": "The size of dividers in the email",
+            "type": "integer",
+            "default": 1
+          },
+          "showCover": {
+            "description": "Whether to show the cover image in the email",
+            "type": "boolean",
+            "default": true
+          },
+          "trackOpens": {
+            "description": "Whether to track email opens",
+            "type": "boolean",
+            "default": true
+          },
+          "trackLinks": {
+            "description": "Whether to track link clicks",
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "Send": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The unique ID of the send",
+            "type": "string"
+          },
+          "workspace_id": {
+            "description": "The ID of the workspace this send belongs to",
+            "type": "string"
+          },
+          "segment_id": {
+            "description": "The ID of the segment this send is targeting (optional)",
+            "type": "string"
+          },
+          "page_id": {
+            "description": "The ID of the Notion page this send is based on",
+            "type": "string"
+          },
+          "html": {
+            "description": "The HTML content of the email",
+            "type": "string"
+          },
+          "subject": {
+            "description": "The subject line of the email",
+            "type": "string"
+          },
+          "preheader": {
+            "description": "The preheader text of the email",
+            "type": "string"
+          },
+          "font": {
+            "description": "The font used in the email",
+            "type": "string"
+          },
+          "css": {
+            "description": "Custom CSS for the email",
+            "type": "string"
+          },
+          "linkColor": {
+            "description": "The color of links in the email",
+            "type": "string",
+            "default": "#0000ED"
+          },
+          "status": {
+            "description": "The status of the send",
+            "type": "string",
+            "enum": ["draft", "sending", "sent"],
+            "default": "draft"
+          },
+          "dividerColor": {
+            "description": "The color of dividers in the email",
+            "type": "string",
+            "default": "#434343"
+          },
+          "dividerSize": {
+            "description": "The size of dividers in the email",
+            "type": "integer",
+            "default": 1
+          },
+          "showCover": {
+            "description": "Whether to show the cover image in the email",
+            "type": "boolean",
+            "default": true
+          },
+          "sentAt": {
+            "description": "The timestamp when the send was sent",
+            "type": "string",
+            "format": "date-time"
+          },
+          "trackOpens": {
+            "description": "Whether to track email opens",
+            "type": "boolean",
+            "default": true
+          },
+          "trackLinks": {
+            "description": "Whether to track link clicks",
+            "type": "boolean",
+            "default": true
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SendIssueRequest": {
+        "type": "object",
+        "properties": {
+          "senderId": {
+            "description": "The ID of the sender to use for this send. Defaults to the first sender of your default domain for the workspace. Find sender IDs in your email settings on Notocat.",
+            "type": "string"
+          }
+        }
+      },
+      "SendIssueResponse": {
+        "type": "object",
+        "properties": {
+          "subscribers": {
+            "description": "The number of subscribers the issue was sent to",
+            "type": "integer"
+          },
+          "status": {
+            "description": "The status of the send operation",
+            "type": "string",
+            "enum": ["sending"]
+          }
+        }
+      },
+      "SendTestRequest": {
+        "required": ["To"],
+        "type": "object",
+        "properties": {
+          "To": {
+            "description": "The email address to send the test to",
+            "type": "string",
+            "format": "email"
+          }
+        }
+      },
+      "SendTestResponse": {
+        "type": "object",
+        "properties": {
+          "To": {
+            "description": "The recipient email address",
+            "type": "string",
+            "format": "email"
+          },
+          "SubmittedAt": {
+            "description": "The timestamp when the email was submitted",
+            "type": "string",
+            "format": "date-time"
+          },
+          "MessageID": {
+            "description": "The unique message ID assigned by Postmark",
+            "type": "string"
+          },
+          "ErrorCode": {
+            "description": "Error code if the send failed (0 for success)",
+            "type": "integer"
+          },
+          "Message": {
+            "description": "Status message",
+            "type": "string"
           }
         }
       },
