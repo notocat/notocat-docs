@@ -96,7 +96,8 @@
       "pages": [
         "api-reference/endpoint/sends/create",
         "api-reference/endpoint/sends/test",
-        "api-reference/endpoint/sends/send"
+        "api-reference/endpoint/sends/send",
+        "api-reference/endpoint/sends/send-direct"
       ]
     }
   ],

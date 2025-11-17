@@ -347,6 +347,44 @@
         }
       }
     },
+    "/v1/sends/send": {
+      "post": {
+        "description": "Creates and immediately sends an issue to subscribers in one request",
+        "requestBody": {
+          "description": "Send creation and configuration data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAndSendRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Issue created and sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendIssueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sends/{id}/send": {
       "post": {
         "description": "Sends an issue to subscribers",
@@ -661,6 +699,78 @@
             "description": "Last update timestamp",
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "CreateAndSendRequest": {
+        "required": ["workspace_id", "page_id"],
+        "type": "object",
+        "properties": {
+          "workspace_id": {
+            "description": "The ID of the workspace (newsletter)",
+            "type": "string"
+          },
+          "page_id": {
+            "description": "The ID of the Notion page to transform into an issue",
+            "type": "string"
+          },
+          "subject": {
+            "description": "The subject line of the email. If not provided, it will be extracted from the Notion page properties.",
+            "type": "string"
+          },
+          "preheader": {
+            "description": "The preheader text of the email",
+            "type": "string"
+          },
+          "segment_id": {
+            "description": "The ID of the segment to send to. If not provided, all workspace contacts will be used.",
+            "type": "string"
+          },
+          "font": {
+            "description": "The font used in the email",
+            "type": "string"
+          },
+          "css": {
+            "description": "Custom CSS for the email",
+            "type": "string"
+          },
+          "linkColor": {
+            "description": "The color of links in the email",
+            "type": "string",
+            "default": "#0000ED"
+          },
+          "dividerColor": {
+            "description": "The color of dividers in the email",
+            "type": "string",
+            "default": "#434343"
+          },
+          "dividerSize": {
+            "description": "The size of dividers in the email",
+            "type": "integer",
+            "default": 1
+          },
+          "showCover": {
+            "description": "Whether to show the cover image in the email",
+            "type": "boolean",
+            "default": true
+          },
+          "trackOpens": {
+            "description": "Whether to track email opens",
+            "type": "boolean",
+            "default": true
+          },
+          "trackLinks": {
+            "description": "Whether to track link clicks",
+            "type": "boolean",
+            "default": true
+          },
+          "senderId": {
+            "description": "The ID of the sender to use for this send. Find sender IDs in your email settings on Notocat.",
+            "type": "string"
+          },
+          "properties": {
+            "description": "Notion page properties object, used to extract subject if not explicitly provided",
+            "type": "object"
           }
         }
       },
