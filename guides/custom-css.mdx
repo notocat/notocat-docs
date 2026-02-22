@@ -14,16 +14,102 @@ Please note that the CSS needs to be valid and supported by all the email client
 
 ## Available CSS classes
 
-* `nc_link` - The class for the links in your issue
-* `nc_heading1` - Heading 1 block styling
-* `nc_heading2` - Heading 2 block styling
-* `nc_heading3` - Heading 3 block styling
-* `nc_paragraph` - The class for the paragraphs in your issue
-* `nc_divider` - The class for the divider lines in your issue
-* `nc_image` - The class for the images in your issue
-* `nc_main_table` - The class for the main content of the email
-* `nc_body` - The class for the body of the email (contains the main table)
-* `nc_spacing` - The class of the element that adds spacing between blocks
+### Content blocks
+
+| Class | Description |
+|-------|-------------|
+| `nc_paragraph` | Paragraphs, lists, todo lists, callouts, quotes, and text in columns |
+| `nc_heading1` | Heading 1 block |
+| `nc_heading2` | Heading 2 block |
+| `nc_heading3` | Heading 3 block |
+| `nc_code` | Inline code snippets |
+| `nc_divider` | Divider line (`<hr>`) |
+| `nc_divider_wrap` | Wrapper around the divider |
+| `nc_image` | Images |
+| `nc_caption` | Image captions |
+
+### Links
+
+| Class | Description |
+|-------|-------------|
+| `nc_link` | All links in your issue |
+
+### Callouts & quotes
+
+| Class | Description |
+|-------|-------------|
+| `nc_callout_box` | Callout block container |
+| `nc_callout_box_bordered` | Callout with border (non-background style) |
+| `nc_quote_box` | Quote block |
+| `nc_icon_cell` | Callout icon table cell |
+| `nc_icon_img` | Callout icon image |
+| `nc_icon_emoji` | Callout emoji icon |
+
+### Columns
+
+| Class | Description |
+|-------|-------------|
+| `nc_column` | Column cell |
+| `nc_column_first` | First column (no left padding) |
+| `nc_column_last` | Last column (no right padding) |
+| `nc_column_mid` | Middle column |
+| `nc_column_row` | Row containing columns |
+| `nc_columns` | Columns table container |
+
+### Layout & structure
+
+| Class | Description |
+|-------|-------------|
+| `nc_body` | Body of the email (contains the main table) |
+| `nc_full_wrap` | Full-width wrapper table |
+| `nc_main_table` | Main content table (650px) |
+| `nc_aside5` | Outer padding |
+| `nc_aside10` | Inner padding |
+| `nc_h20` | Header spacing |
+| `nc_spacing` | Spacing between blocks |
+| `nc_children_indent` | Indented nested content (e.g. paragraph children) |
+| `nc_empty_block` | Empty block placeholder |
+| `nc_line_tight` | Tight line-height (1.2em) for colored text spans |
+
+### Unsubscribe
+
+| Class | Description |
+|-------|-------------|
+| `nc_unsubscribe` | Unsubscribe link section |
+
+### Notion color classes
+
+These classes are applied when you use Notion's text or background colors. Use them to override or extend the default styling.
+
+**Text colors** (`nc_text_*`):
+
+| Class | Description |
+|-------|-------------|
+| `nc_text_default` | Default text color |
+| `nc_text_gray` | Gray text |
+| `nc_text_brown` | Brown text |
+| `nc_text_orange` | Orange text |
+| `nc_text_yellow` | Yellow text |
+| `nc_text_green` | Green text |
+| `nc_text_blue` | Blue text |
+| `nc_text_purple` | Purple text |
+| `nc_text_pink` | Pink text |
+| `nc_text_red` | Red text |
+
+**Background colors** (`nc_bg_*`):
+
+| Class | Description |
+|-------|-------------|
+| `nc_bg_default` | Default (white) background |
+| `nc_bg_gray-background` | Gray background |
+| `nc_bg_brown-background` | Brown background |
+| `nc_bg_orange-background` | Orange background |
+| `nc_bg_yellow-background` | Yellow background |
+| `nc_bg_green-background` | Green background |
+| `nc_bg_blue-background` | Blue background |
+| `nc_bg_purple-background` | Purple background |
+| `nc_bg_pink-background` | Pink background |
+| `nc_bg_red-background` | Red background |
 
 ## Examples
 
