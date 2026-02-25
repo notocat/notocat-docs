@@ -19,14 +19,23 @@ Please note that the CSS needs to be valid and supported by all the email client
 | Class | Description |
 |-------|-------------|
 | `nc_paragraph` | Paragraphs, lists, todo lists, callouts, quotes, and text in columns |
-| `nc_heading1` | Heading 1 block |
-| `nc_heading2` | Heading 2 block |
-| `nc_heading3` | Heading 3 block |
+| `nc_heading1`, `nc_heading2`, `nc_heading3` | Heading blocks (also get index classes, e.g. `nc_heading1_1`, `nc_heading2_2`) |
 | `nc_code` | Inline code snippets |
 | `nc_divider` | Divider line (`<hr>`) |
 | `nc_divider_wrap` | Wrapper around the divider |
-| `nc_image` | Images |
+| `nc_image` | Images (also get index classes, e.g. `nc_image_1`, `nc_image_2`) |
 | `nc_caption` | Image captions |
+
+### Global index classes
+
+Images and headings receive **globally unique index classes** in document order. Use them to target specific elements without affecting others.
+
+| Class pattern | Description |
+|---------------|-------------|
+| `nc_image_1`, `nc_image_2`, `nc_image_3`, … | First, second, third image in the issue (cover image counts as first if present) |
+| `nc_heading1_1`, `nc_heading2_2`, `nc_heading3_3`, … | First, second, third heading in the issue (any level) |
+
+Each element keeps its base class plus the index class, e.g. `nc_image nc_image_1` or `nc_heading2 nc_heading2_2`. Indices are global across the entire HTML, including nested content (lists, columns, etc.).
 
 ### Links
 
@@ -150,5 +159,21 @@ These classes are applied when you use Notion's text or background colors. Use t
   margin-bottom: 5px;
   font-weight: 600;
   color: #434343;
+}
+```
+
+### Targeting specific images or headings by index
+
+Use the global index classes to style only certain elements:
+
+```css
+/* Style only the first image differently */
+.nc_image_1 {
+  border-radius: 12px;
+}
+
+/* Make the first heading larger than the rest */
+.nc_heading1_1 {
+  font-size: 36px;
 }
 ```
